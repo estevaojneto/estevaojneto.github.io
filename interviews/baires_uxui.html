@@ -8,7 +8,7 @@
 
 <section class="sec sec0" id="sec0">    
   <div class="center_content section-content">    
-    <h1>Olá, <strong>Gabriel!</strong></h1>
+    <h1>Olá, <strong>Gabriel! 😊</strong></h1>
     <p>Muito obrigado pela oportunidade de trabalhar na BairesDev.</p>
     <p class="actual_text">Elaborei esta pequena página para servir para sua referência durante o processo seletivo.<br>Vamos começar?</p>    
   </div>
@@ -57,7 +57,7 @@
         <td>Trabalho em equipe</td>
       </tr>
     </table>
-    <p><a href="https://github.com/estevaojneto">GitHub</a> | <a href="https://www.linkedin.com/in/estev%C3%A3o-neto-456aa91a9/">LinkedIn</a></p>
+    <p class="actual_text"><a href="https://github.com/estevaojneto">GitHub</a> | <a href="https://www.linkedin.com/in/estev%C3%A3o-neto-456aa91a9/">LinkedIn</a></p>
     <p class="actual_text">
       Inglês Fluente (leitura/escrita) / Avançado (conversação)
     </p>
@@ -72,7 +72,7 @@
 </section>
 <section class="sec sec3" id="sec3">
   <div class="center_content">
-    <h2>Por que trabalhar na <strong>BairesDev</strong>?</h2>
+    <h2>Por que trabalhar na <strong>BairesDev</strong>? 🤔</h2>
     <p class="actual_text">Candidatei-me para a <strong>BairesDev</strong> porque achei interessante que exista uma empresa latino-americana que trabalha com <em>outsourcing</em> de mão-de-obra para diversas gigantes da tecnologia.</p>
     <p class="actual_text">Tenho experiência holística em desenvolvimento de sistemas, tendo sido responsável várias vezes por tarefas desde a concepção de <em>mockups</em> da interface até o backend e o banco de dados, considerando sempre o usuário real e como o produto é utilizado na prática.</p>
     <p class="actual_text">Acredito que posso ser útil para a <strong>BairesDev</strong> devido à minha experiência em desenvolvimento fullstack e também pela minha experiência anterior em Design e Marketing, áreas cruciais para entender o usuário de um produto e, com isso, desenvolver uma boa UX.</p>
@@ -83,6 +83,7 @@
   <div class="center_content">
     <h1>Muito obrigado!</h1>
     <p>Estarei aguardando notícias da <strong>Baires</strong> - notícias boas, espero!</p>
+    <p>👏</p>
     <br><br>
     <small>Entrevista realizada em 28 de Maio de 2020.</small>
   </div>
@@ -145,9 +146,7 @@ body {
     border-radius: 100%;
   }
   .center_content{
-    padding-top: 7vh;
-    padding-bottom: 13vh;
-    min-height: 80vh;
+    min-height: 90vh;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -168,8 +167,31 @@ body {
     background: lightgreen;
   }
   .prev-section, .next-section{
-    font-size:36pt
+    font-size:10vh
   }
+  .prev-section:hover, .next-section:hover{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  @keyframes shake {
+  10%, 90% {
+    transform: translate3d(0, -1px, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(0, 2px, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(0, -4px, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(0, 4px, 0);
+  }
+}
 </style>
 <script>
   jQuery.fn.extend({
