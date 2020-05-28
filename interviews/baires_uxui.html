@@ -165,32 +165,14 @@ body {
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
 <script>
-		    var cur = getCookie("current_page");
-		    if(cur==null){
-		        document.cookie = "current_page=0";
-		        cur=0;
-		    }
-		    else{
-		        $("#sec0").fadeOut();
-		        document.cookie = "current_page="+cur;
-		        $("#sec"+cur.toString()).fadeIn();
-		    }
-            function getCookie(name) {
-                  var value = "; " + document.cookie;
-                  var parts = value.split("; " + name + "=");
-                  if (parts.length == 2) return parts.pop().split(";").shift();
-                }
-            function change_sec(op){ /* op = operation to be done (1 = next page, -1 = prev page) */
-                    cur = getCookie("current_page");
-                   var int_cur = parseInt(cur);
-                   var int_op = parseInt(op);
-		           if(int_cur+int_op > -1 && int_cur+int_op < 4){
-		               $("#sec"+cur).fadeOut(); 
-    		           int_cur += parseInt(op);
-    		           $("#sec"+int_cur).fadeIn(); 
-    		           document.cookie = "current_page="+int_cur.toString();
-		               }
-		           }
+       var cur = 0; 
+       function change_sec(cur, op){ /* op = operation to be done (1 = next page, -1 = prev page) */
+            var int_op = parseInt(op);
+		        if(cur+int_op > -1 && cur+int_op < 6){
+    		      cur += parseInt(op);
+    		      document.getElementById("sec"+cur.toString()).scrollIntoView();
+		        }
+		      }
 		</script>
 </body>
 </html>
