@@ -3,13 +3,15 @@
 <head>
     <meta charset="utf-8">    
     <title>EJ's Guide of ReactJS</title>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap'); .oldstyle{font-family: 'Uncial Antiqua', cursive;}</style>
 </head>
 <body>
 <header class="container" style="text-align:center">
     <i class="fab fa-react fa-8x" style="color:#61dafb"></i>
-    <h1>ReactJS abridged</h1>
-    <small>(sort of)</small>
+    <h1>ReactJS unabridged</h1>
+    <small>A detailed but hopefully simple explanation of most things React</small>
 </header>
+<br>
 <section class="container">
         <div class="card">
             <div class="card-header"><h5>What is this?</h5></div>
@@ -17,9 +19,11 @@
                 <p>I am currently, as of June 2020 when this guide was started, a jobhunter.</p>
                 <p>What I found out is that modern tech companies, especially those especializing in web development and/or UX, have ReactJS as their main goto library for designing interfaces. Here in Brazil much is said about learning Python to magically triple your salary, but as of right now what I see most are great opportunities in Javascript and especially ReactJS/NodeJS development. Thus I decided to create this guide for teaching, learning and using it as a reference whenever I forget a certain small detail here and there - hey, we're all human!</p>
                 <p>Now, job skill tests tend to be very focused on the theoretical parts of the language, but most courses I have seen are very, very practical oriented; this creates a gap where a programmer can create a full (poorly functioning, poorly optimized) React application without barely understanding what's happening under the hood. This is not the type of programmer I want anyone to be, so let's try to build a bridge in here...</p>
+                <p>I will copy some text verbatim and some examples from the official <a href="https://reactjs.org/docs/introducing-jsx.html">React docs</a>. I suggest reading it and using it to clear up anything you don't understand from my explanations - and vice-versa. The important thing is for us all to learn and improve ourselves. Good luck on your journey!</p>
             </div>
         </div>
     </section>
+    <br>
     <section class="container">
         <div class="card">
             <div class="card-header"><h5>What exactly is ReactJS?</h5></div>
@@ -40,23 +44,76 @@
             </div>
         </div>
     </section>
-        <section class="container">
+    <br>
+    <section class="container">
         <div class="card">
-            <div class="card-header"><h5>Setting up a Node/React environment</h5></div>
+            <div class="card-header"><h5>Setting up a Node environment and a React Project</h5></div>
             <div class="card-body">
-                <p>Setting up your computer to run a React environment is something I wish to not be stuck on; I will just drop a link to a very good guide which teaches you how to do it in Windows. If you're using Linux, try looking up on Google for information for your specific platform.</p>
-                <a href="https://makandracards.com/reactjs-quick/52419-install-reactjs-windows">Setting up React on Windows</a> - I tested this and it works as of May 2020. You don't *need* to install Visual Studio Code (albeit I do recommend it), you can use another IDE of your choice if you prefer.
-                <a href="https://wiki.archlinux.org/index.php/Node.js_">Setting up Node on Linux - ArchWiki</a> - you need to setup a Node environment before you can install the React library.
-                <small>Credits for those guides go to their respective authors.</small>
+                <p>React is a library, and thus it requires NodeJS to be installed in your computer. Setting up an environment is something I wish to not be stuck on; I will just drop a link to some good guides which teaches you how to do it in Windows. If you're using Linux, try looking up on Google for information for your specific platform.</p>
+                <p><a href="https://makandracards.com/reactjs-quick/52419-install-reactjs-windows">Setting up React on Windows</a> - I tested this and it works as of May 2020. You don't *need* to install Visual Studio Code (albeit I do recommend it), you can use another IDE of your choice if you prefer.</p>
+                <p><a href="https://wiki.archlinux.org/index.php/Node.js_">Setting up Node on Linux - ArchWiki</a> - you need to setup a Node environment before you can install the React library, once Node is installed, install React through NPM (npm install -g create-react-app). Sudo may be necessary.</p>
+                <p><a href="https://www.devmedia.com.br/como-instalar-o-node-js-npm-e-o-react-no-windows/40329">Setting up Node, NPM and React - DevMedia (Português do Brasil)</a> - se você não sabe Inglês, nem sei como você chegou a esse ponto do guia, mas de qualquer forma essas instruções são bem claras.</p>
+                <p>Credits for those guides go to their respective authors.</p>
             </div>
         </div>
     </section>
-
+    <br>
+    <section class="container">
+            <div class="card">
+            <div class="card-header"><h5>Introducing JSX - the (optional) file format for React</h5></div>
+            <div class="card-body">
+                <p>Let's start with the basics! Have you ever heard of <strong>JSX</strong>?</p>
+                <p>JSX is an acronym for <em>Javascript XML</em>, which is defined by the React docs "a syntax extension to Javascript". This vague definition does not tell us all the history; more consistently, JSX extends Javascript syntax by allowing us to write HTML and CSS code within the scope of a Javascript function or class, which is compiled by a compiler called Babel and outputs plain Javascript functions. You can see this in action by looking at the Babel online compiler <a href="https://babeljs.io/repl/">available right here</a>. Other compilers could be used if you really want, but you don't have to worry about that in most cases, Babel is just fine.</p>
+                <p>To be fair, <strong>JSX is not necessary for you to build a React app</strong>. <a href="https://reactjs.org/docs/react-without-jsx.html">"anything you can do with JSX can also be done with just plain JavaScript"</a>, because in reality everything you do in JSX is just a call to <code>React.createElement()</code>. This means in theory you can create an entire web app in just one HTML file - of course, <u>don't actually do this</u>; this is just an example on how flexible React is.</p>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="container">
+            <div class="card">
+            <div class="card-header"><h5>JSX: isn't HTML inside JS a bad thing?</h5></div>
+            <div class="card-body">
+                <p>You now know what is JSX, but why should you care about it? Or even: why not use plain Javascript to manipulate your HTML documents?</p>
+                <p>Well, you see, JSX is quite powerful. In the <span class="oldstyle">old days of web development</span>, Javascript was used as an accessory to an HTML document - you could manipulate DOM by using certain pure Javascript methods (document.getElement(...)), but this approach limited developers in certain ways. For example, if you needed to repeat a certain HTML element (e.g a list item inside a user list) that was static in appearance but was dynamic in its content (e.g each list item had a different user name), things could get <em>complicated</em>. Here's a concise definition of <em>complicated</em>:</p>
+                <ul>
+                    <li>Your webpage could get very messy in terms of markup; unclosed tags, unescaped single/double quotes and others hellish situations;</li>
+                    <li>In bizarre situations, you might even end up declaring a <code>script</code> inside a <code>script</code> (I have seen this, and it is ugly);</li>
+                    <li>HTML inside Javascript inside HTML(TM) is very, very slow and complex to render;</li>
+                    <li>HTML inside Javascript inside HTML's very complex render is all done on client-side. Goodbye, battery life! Hello, terrible UX!</li>
+                </ul>
+                <p>So, how do you reuse an HTML element without exploding the user's device?</p>
+                <p>Many frameworks and libraries found workarounds for these problems - for example, Laravel uses Blade, which builds a page in the server-side allowing you to use PHP (to e.g. repeat a certain styled <code>div</code> with dynamic content) and delivers to the client a static webpage. This works pretty well - I use Laravel a lot on my web systems - but React goes even beyond. You'll understand in the next <code>section</code>.</p>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="container">
+            <div class="card">
+            <div class="card-header"><h5>JSX: HTML inside JS instead of JS inside HTML</h5></div>
+            <div class="card-body">
+                <p>For a long time, in the <span class="oldstyle">old days of web development</span>, what we did was put Javascript inside HTML to manipulate the DOM in certain ways as discussed in the previous <code>section</code>. With React, we do the opposite: through the React library, Javascript code dictates how things should be rendered on the front-end. Now, for the first time, let's look at some code!</p>
+                <code>
+                    const name = 'Josh Perez';<br>
+                    const element = &lt;h1>Hello, {name}&lt;/h1>;<br>
+                    <br>
+                    ReactDOM.render(<br>
+                      element,<br>
+                      document.getElementById('root')<br>
+                    );<br>
+                </code>
+                <p>Okay, this is... Different from what we are used to. What is happening here? Let's break it down piece-by-piece:</p>
+                <code>const name = 'Josh Perez';<br>
+                const element = &lt;h1>Hello, {name}&lt;/h1>;</code>
+                <p>The first line is simply declaring a constant called <code>name</code>, like you would expect in regular JS. The next line is where the fun begins; we have declared a constant called <code>element</code>; it literally is an HTML element <code>h1</code></p>
+            </div>
+        </div>
+    </section>
     <footer id="foot" class="container" style="text-align:center">Made by Estevao J. Neto - </footer>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script>
         document.getElementById("foot").innerHTML += "2020 - " + new Date().getFullYear();
     </script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
