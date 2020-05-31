@@ -89,7 +89,7 @@
     <br>
     <section class="container">
             <div class="card">
-            <div class="card-header"><h5>JSX: HTML inside JS instead of JS inside HTML</h5></div>
+            <div class="card-header"><h5>JSX and Elements</h5></div>
             <div class="card-body">
                 <p>For a long time, in the <span class="oldstyle">old days of web development</span>, what we did was put Javascript inside HTML to manipulate the DOM in certain ways as discussed in the previous <code>section</code>. With React, we do the opposite: through the React library, Javascript code dictates how things should be rendered on the front-end. Now, for the first time, let's look at some code!</p>
                 <code>
@@ -115,19 +115,37 @@
                 <p>This means that <code>render()</code> receives an HTML element <code>element</code> as described by the variable of the same name, and does its magic to load <code>element</code> inside the HTML element whose ID is <code>root</code>. Pretty intuitive, right?</p>
                 <p>On a fresh (or relatively simple/unmodified) React project, if you browse the folder <code>[PROJECT ROOT]/public/index.html</code>, you'll see this:</p>
                 <code>
-                    <div id="root"></div><br>
+                    &lt;div id="root">&lt;/div><br>
                     &lt;!-- big comment here - read it, it's informative -->
                 </code>
-                <p><em>This is important:</em> <code>ReactDOM.render()</code> is normally called only once on each "page load", and its function is to receive a fully constructed page and show it to the user. Calling it multiple times will simply replace the previous content of the <code>innerHtml</code> of the parent (like the <code>div</code> whose ID is <code>root</code> in our previous example). <a href="https://web.archive.org/web/20170916072252/https://stackoverflow.com/questions/46236593/calling-reactdom-render-more-than-once">See this StackOverflow question for more information.</a></p>
+                <p>So this your parent for element. <em>We call this a "root" DOM node because everything inside it will be managed by React DOM</em> (verbatim from React Docs).</p>
+                <p>Also, <em>this is good to know:</em> <code>ReactDOM.render()</code> is normally called only once on each "page load", and its function is to receive a fully constructed page and show it to the user. Calling it multiple times will simply replace the previous content of the <code>innerHtml</code> of the parent (like the <code>div</code> whose ID is <code>root</code> in our previous example). <a href="https://web.archive.org/web/20170916072252/https://stackoverflow.com/questions/46236593/calling-reactdom-render-more-than-once">See this StackOverflow question for more information.</a></p>
+                <p>Lastly for this section, if you're coming from other web development contexts *especially PHP*, then you must know already that you NTUI (Never Trust User Input), not only on the backend but also in the frontend. On PHP you would use <code>htmlspecialchars()</code> to clear use input before delivering the page, and in React, the following has a similar function:</p>
+                <code>
+                    const title = response.potentiallyMaliciousInput;<br>
+                    const element = &lt;h1>{title}&lt;/h1>;
+                </code>
+                <p>This cleans input. <code>element</code> can be rendered without worries. For more information, <a href="https://medium.com/@arunrajeevan/how-react-helps-in-mitigating-cross-site-scripting-xss-attack-2f724c9e9242">read up this great text by Arun Rajeevan</a>.</p>
             </div>
         </div>
     </section>
     <br>
     <section class="container">
         <div class="card">
-            <div class="card-header"><h5>"Page load": no such thing in React</h5></div>
+            <div class="card-header"><h5>Elements: Rendering</h5></div>
                 <div class="card-body">
-                    <p>Towards the very end of the last section, I used the term "page load" between quotes. This is because a project that is fully built with React <em>doesn't change pages</em>, at least not in the way we are used to if you come from a raw HTML/JS context.</p>
+                </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="card">
+            <div class="card-header"><h5>Routing in React</h5></div>
+                <div class="card-body">
+                    <p>Towards the very end of the section called "JSX and Elements", I used the term "page load" between quotes. This is because a project that is fully built with React <em>doesn't change pages</em>, at least not in the way we are used to if you come from a raw HTML/JS context.</p>
+                    <p>Through React, it is possible to build a whole application in one single page; this is known as a Single Page App (SPA). The advantages and disadvantages of this approach have been discussed exhaustively on the internet; I suggest you look it up.</p>
+                    <p>Well - if there is no page reloading, then how does the page change? I mean, look at e.g. Instagram: there are many pages you can open up. You can see your friend's post, your feed, Stories and whatnot. How come the page never reloads even though you're accessing a lot of different screens?</p>
+                    <p>Enter <strong>Routing</strong>. There is a library called <code>react-router</code>, developed by Michael Jackson (not the singer) and Ryan Florence, and which is vastly used by React apps to handle routing.</p>
+                    <p>Why should you use routing? If you're coming from Laravel like I did, then routing is no great mystery to you; in fact, react-router can be quite arranged to work very similarly to how routing is done in Laravel, with of course some synthatic and semantical differences here and there.</p>
                 </div>
         </div>
     </section>
