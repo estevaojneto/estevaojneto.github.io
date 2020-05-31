@@ -104,16 +104,39 @@
                 <p>Okay, this is... Different from what we are used to. What is happening here? Let's break it down piece-by-piece:</p>
                 <code>const name = 'Josh Perez';<br>
                 const element = &lt;h1>Hello, {name}&lt;/h1>;</code>
-                <p>The first line is simply declaring a constant called <code>name</code>, like you would expect in regular JS. The next line is where the fun begins; we have declared a constant called <code>element</code>; it literally is an HTML element <code>h1</code></p>
+                <p>The first line is simply declaring a constant called <code>name</code>, like you would expect in regular JS. The next line is where the fun begins; we have declared a constant called <code>element</code>; it literally is an HTML element <code>h1</code>, which will be passed to ReactDOM's method render():</p>
+                <code>ReactDOM.render(<br>
+                      element,<br>
+                      document.getElementById('root')<br>
+                    );<br>
+                </code>
+                <p>The method signature for <code>ReactDOM.render()</code> is:</p>
+                <code>ReactDOM.render(element, container[, callback])</code>
+                <p>This means that <code>render()</code> receives an HTML element <code>element</code> as described by the variable of the same name, and does its magic to load <code>element</code> inside the HTML element whose ID is <code>root</code>. Pretty intuitive, right?</p>
+                <p>On a fresh (or relatively simple/unmodified) React project, if you browse the folder <code>[PROJECT ROOT]/public/index.html</code>, you'll see this:</p>
+                <code>
+                    <div id="root"></div><br>
+                    &lt;!-- big comment here - read it, it's informative -->
+                </code>
+                <p><em>This is important:</em><code>ReactDOM.render()</code> is normally called only once on each "page load", and its function is to receive a fully constructed page and show it to the user. Calling it multiple times will simply replace the previous content of the <code>innerHtml</code> of the parent (like the <code>div</code> whose ID is <code>root</code> in our previous example).</p>
             </div>
         </div>
     </section>
+    <br>
+    <section class="container">
+        <div class="card">
+            <div class="card-header"><h5>"Page load": no such thing in React</h5></div>
+                <div class="card-body">
+                    <p>Towards the very end of the last section, I used the term "page load" between quotes. This is because a project that is fully built with React <em>doesn't change pages</em>, at least not in the way we are used to if you come from a raw HTML/JS context.</p>
+                </div>
+        </div>
+    </section>
+    <br>
     <footer id="foot" class="container" style="text-align:center">Made by Estevao J. Neto - </footer>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script>
         document.getElementById("foot").innerHTML += "2020 - " + new Date().getFullYear();
     </script>
-    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
