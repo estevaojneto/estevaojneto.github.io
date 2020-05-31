@@ -120,12 +120,12 @@
                 </code>
                 <p>So this your parent for element. <em>We call this a "root" DOM node because everything inside it will be managed by React DOM</em> (verbatim from React Docs).</p>
                 <p>Also, <em>this is good to know:</em> <code>ReactDOM.render()</code> is normally called only once on each "page load", and its function is to receive a fully constructed page and show it to the user. Calling it multiple times will simply replace the previous content of the <code>innerHtml</code> of the parent (like the <code>div</code> whose ID is <code>root</code> in our previous example). <a href="https://web.archive.org/web/20170916072252/https://stackoverflow.com/questions/46236593/calling-reactdom-render-more-than-once">See this StackOverflow question for more information.</a></p>
-                <p>Lastly for this section, if you're coming from other web development contexts *especially PHP*, then you must know already that you NTUI (Never Trust User Input), not only on the backend but also in the frontend. On PHP you would use <code>htmlspecialchars()</code> to clear use input before delivering the page, and in React, the following has a similar function:</p>
+                <p>Lastly for this section, if you're coming from other web development contexts *especially PHP*, then you must know already that you NTUI (Never Trust User Input), not only on the backend but also in the frontend. On PHP you would use <code>htmlspecialchars()</code> to clear use output before delivering the page, and in React, the following has a similar function:</p>
                 <code>
                     const title = response.potentiallyMaliciousInput;<br>
                     const element = &lt;h1>{title}&lt;/h1>;
                 </code>
-                <p>This cleans input. <code>element</code> can be rendered without worries. For more information, <a href="https://medium.com/@arunrajeevan/how-react-helps-in-mitigating-cross-site-scripting-xss-attack-2f724c9e9242">read up this great text by Arun Rajeevan</a>.</p>
+                <p>This cleans your output. <code>element</code> can be rendered without worries. For more information, <a href="https://medium.com/@arunrajeevan/how-react-helps-in-mitigating-cross-site-scripting-xss-attack-2f724c9e9242">read up this great text by Arun Rajeevan</a>.</p>
             </div>
         </div>
     </section>
@@ -137,6 +137,7 @@
                 </div>
         </div>
     </section>
+    <br>
     <section class="container">
         <div class="card">
             <div class="card-header"><h5>Routing in React</h5></div>
