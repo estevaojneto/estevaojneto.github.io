@@ -81,7 +81,7 @@
                     <li>HTML inside Javascript inside HTML(TM) is very, very slow and complex to render;</li>
                     <li>HTML inside Javascript inside HTML's very complex render is all done on client-side. Goodbye, battery life! Hello, terrible UX!</li>
                 </ul>
-                <p>So, how do you reuse an HTML element without exploding the user's device?</p>
+                <p>So, how do you reuse an HTML element without exploding the user's device, and still adhere to the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY (Don't Repeat Yourself) principle</a>?</p>
                 <p>Many frameworks and libraries found workarounds for these problems - for example, Laravel uses Blade, which builds a page in the server-side allowing you to use PHP (to e.g. repeat a certain styled <code>div</code> with dynamic content) and delivers to the client a static webpage. This works pretty well - I use Laravel a lot on my web systems - but React goes even beyond. You'll understand in the next <code>section</code>.</p>
             </div>
         </div>
@@ -130,6 +130,7 @@
         </div>
     </section>
     <br>
+    
     <section class="container">
         <div class="card">
             <div class="card-header"><h5>Elements: Rendering</h5></div>
@@ -144,8 +145,8 @@
                           document.getElementById('root')<br>
                         );<br>
                     </code>
-                <p>Once render() is called, the element is immutable. This means that its properties (called <code>props</code>) cannot be altered once it's been rendered, but that does not mean that the element has to be visually static.</p>
-                <p>If you were to build a simple clock using React, you could go for this example (from the React Docs):</p>
+                <p>Once render() is called, the element is immutable. This means that its attributes cannot be altered once it's been rendered (i.e you can't change "Josh Perez" to "John Gonzales" after rendering), but that does not mean that the element has to be visually static.</p>
+                <p>If you were to build a simple clock using React, which has to be updated every 1 second (1000 miliseconds), you could go for this example (from the React Docs):</p>
                 <code>function tick() {
                           const element = (<br>
                             &lt;div><br>
@@ -165,6 +166,45 @@
                 </div>
         </div>
     </section>
+    <br>
+    
+    <section class="container">
+        <div class="card">
+            <div class="card-header"><h5>React.Component</h5></div>
+                <div class="card-body">
+                    <p>The greatest feature in React, in my opinion, is the hability to create Components. A React Component (abstract class <code>React.Component</code>) are the small pieces that compose the whole user interface.</p>
+                    <p>In other words, if you were to have something like this:</p>
+                    
+                </div>
+        </div>
+    </section>
+    <br>
+    <section class="container">
+        <div class="card">
+            <div class="card-header"><h5>React.Component: Example 1</h5></div>
+                <div class="card-body">
+                    <p>Let's take for example a certain version of <a href="https://github.com/estevaojneto/react_calc">react_calc from my Github repository</a>:</p>
+                    <img src="data:image/png;base64,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" alt="react_calc1">
+                    <p>This simple calculator was done with two React Components: one is in the <span style="color:red">red rectangle</span>, and is called <code>CalcDisplay</code>, and the others with the <span style="color:darkgreen">green circles</span> are called <code>CalcButton</code>.</p>
+                    <p>Right now this calculator doesn't <em>really</em> work, it's kind of a mockup, but it's already useful for this guide. Here's the code for the Component <code>CalcButton</code>:</p>
+                    <code>
+                        import React, { Component } from 'react';<br>
+                        class CalcButton extends React.Component {<br>
+                          render() {<br>
+                            return (<br>
+                        		<button>{this.props.value}</button><br>
+                        	);<br>
+                          }<br>
+                        }<br>
+                        export default CalcButton;<br>
+                    </code>
+                    <p>There are some things happening here. The first one is that we are importing the React library and its class called <code>{ Component }</code>. This is crucial because our custom component <code>CalcButton</code> extends <code>React.Component</code> - remember this as it will be important later.</p>
+                    <p>The method <code>render()</code> returns us a HTML element <button>button</button>, whose text is <code>this.props.value</code>.</p>
+                    <p>But wait - what are props?</p>
+                </div>
+        </div>
+    </section>
+    
     <br>
     <section class="container">
         <div class="card">
