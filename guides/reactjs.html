@@ -178,7 +178,7 @@
                     <p><strong>The text at the top is a React Component. The textbox is a React Component. The button is a React component.</strong></p>
                     <p>Now you know what a Component looks like - but how does it work?</p>
                     <p>Enter <strong>Props</strong>. Props are shorthand for <em>Properties</em>, and they are a <em>read-only</em> argument you pass (by value) to every Component you create in react. You see that "Send" text inside that comment box's button? That could be a <code>props.text</code> (an item called "text" inside the Properties list) that was sent to, say, <code>CommentButton</code> and was displayed to the user. Being read-only means that the Component cannot assign another value to a certain props.</p>
-                    <p>This button could be created by two forms:</p>
+                    <p>This button could be inside a certain file called <code>CommentButton.js</code> inside a <code>[project]/some/thing/components</code> folder, and we can create it by two forms:</p>
                     <ul>
                         <li><strong>Function Component</strong>:<br>
                         <code>function CommentButton(props) {<br>
@@ -191,18 +191,62 @@
                         class CommentButton extends React.Component {<br>
                           render() {<br>
                             return (<br>
-                        		&lt;button>{this.props.value}&lt;/button><br>
+                        		&lt;button>{this.props.textValue}&lt;/button><br>
                         	);<br>
                           }<br>
                         }<br>
                         export default CommentButton;<br>
                         </code></li>
                     </ul>
-                    <p>React sees those two Components as equivalents, but for us there are differences to be considered.</p>
+                    <p>React sees those two Components as equivalents, but for us there are differences to be considered - they will be explained in the next section.</p>
+                    <p>Now that I have this Component, I can use it on my front-end; I can place this component in <code>index.js</code> and it will be shown:</p>
+                    <code>
+                    import React from 'react';<br>
+                    import CalcButton from '../../components/CommentButton';<br>
+                        export default function ProductComment(){<br>
+                        return(<br>
+                    		&lt;div><br>
+                    			&lt;CommentButton textValue="SEND"/><br>
+                    		&lt;/div><br>
+                        );<br>
+                    }<br>
+                    </code>
+                    <p>This is really a very rough example of how you could instantiate the Component on a certain front-end Route - here called ProductComment(). Don't worry about that Route right now - <strong>I want you to focus on two lines here</strong>:</p>
+                    <code>import CalcButton from '../../components/CalcButton';</code>
+                    <p>To use the button component we created previously, we must <code>import</code> it. In this case I placed my CalcButton.js this two levels above my <code>index.js</code> file and inside a 'components' folder as denoted by "../../components" (aka "go two folders up"), but you could place it anywhere really - your project's file structure is really up to you.</p>
+                    <p>Also notice how I imported "/CalcButton", not "/CalcButton.js". React knows you're importing a Component that was made using Javascript, so putting ".js" is pointless.</p>
+                    <p>Now, the <em>second (but equally) important line</em> here is this one:</p>
+                    <code>&lt;CommentButton textValue="SEND"/><br></code>
+                    <p>This here is where <code>CommentButton</code> is actually instantiated. Notice how it is inside a certain <code>div</code>; React demands your elements to be well-organized inside divs, sections and any other type of container, it does not allow for you to "throw around" Components everywhere.<br> 
+                    <p>Now, besides the div, there are two other things to be observed about this line: firstly, look at how we instantiated the Component. We used it kind of as we would use a regular HTML tag, even with a shorthand /&gt; closing for the tag - this is one of the great things in React, your Components are absurdly easy to use.</p>
+                    <p>Secondly, the <code>textValue</code> attribute is 
+                    <a href="https://en.wikipedia.org/wiki/Camel_case">written in camelCase</a>; this is the standard way to pass attributes and properties in React. There are some things that you should be aware about that:</p>
+                    <ul>
+                        <li>Your Component should always pass properties as <code>camelCase</code>, as it is the good practice in React; their class/function will also access the property as <em>props.camelCaseProp</em>;</li>
+                        <li><code>camelCase</code> also applies to regular HTML elements and its event handlers; a simple regular &lt;button&gt; would have its <code>onclick</code> styled as <code>onClick</code>; </li>
+                        <li>Some attribute names are also changed in the context of an element or Component: know the &lt;button&gt; I just mentioned? If you were to style it, instead of having <code>class="button_class"</code>, you would have <code>className="button_class"</code>. This is because "class" is a reserved keyword in Javascript. Also you would have to <code>import</code> the CSS file in your libraries.</li>
+                    </ul>
+                    <p>Lastly, if you wanted to instantiate this button several times with different text, the correct way to do so would be by saving the text values inside an array, and instantiate CommentButton using a <code>map()</code> function:</p>
+                    <code>
+                        {text_values_for_button.map(text_value_item => (
+				&lt;CommentButton textValue={text_value_item}/>
+			))}
+                    </code>
+                    <p>Simple and highly reusable, like everything in React.</p>
                 </div>
         </div>
     </section>
     <br>
+        <section class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5>State and Lifecycle</h5>
+            </div>
+                <div class="card-body">
+                    
+                </div>
+        </div>
+    </section>
     <br>
     <section class="container">
         <div class="card">
