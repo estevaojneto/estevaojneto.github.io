@@ -202,7 +202,7 @@
                     <p>Now that I have this Component, I can use it on my front-end; I can place this component in <code>index.js</code> and it will be shown:</p>
                     <code>
                     import React from 'react';<br>
-                    import CalcButton from '../../components/CommentButton';<br>
+                    import CommentButton from '../../components/CommentButton';<br>
                         export default function ProductComment(){<br>
                         return(<br>
                     		&lt;div><br>
@@ -212,9 +212,9 @@
                     }<br>
                     </code>
                     <p>This is really a very rough example of how you could instantiate the Component on a certain front-end Route - here called ProductComment(). Don't worry about that Route right now - <strong>I want you to focus on two lines here</strong>:</p>
-                    <code>import CalcButton from '../../components/CalcButton';</code>
-                    <p>To use the button component we created previously, we must <code>import</code> it. In this case I placed my CalcButton.js this two levels above my <code>index.js</code> file and inside a 'components' folder as denoted by "../../components" (aka "go two folders up"), but you could place it anywhere really - your project's file structure is really up to you.</p>
-                    <p>Also notice how I imported "/CalcButton", not "/CalcButton.js". React knows you're importing a Component that was made using Javascript, so putting ".js" is pointless.</p>
+                    <code>import CommentButton from '../../components/CommentButton';</code>
+                    <p>To use the button component we created previously, we must <code>import</code> it. In this case I placed my CommentButton.js this two levels above my <code>index.js</code> file and inside a 'components' folder as denoted by "../../components" (aka "go two folders up"), but you could place it anywhere really - your project's file structure is really up to you.</p>
+                    <p>Also notice how I imported "/CommentButton", not "/CommentButton.js". React knows you're importing a Component that was made using Javascript, so putting ".js" is pointless.</p>
                     <p>Now, the <em>second (but equally) important line</em> here is this one:</p>
                     <code>&lt;CommentButton textValue="SEND"/><br></code>
                     <p>This here is where <code>CommentButton</code> is actually instantiated. Notice how it is inside a certain <code>div</code>; React demands your elements to be well-organized inside divs, sections and any other type of container, it does not allow for you to "throw around" Components everywhere.<br> 
