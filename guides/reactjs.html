@@ -232,7 +232,7 @@
 				&lt;CommentButton textValue={text_value_item}/>
 			))}
                     </code>
-                    <p>Simple and highly reusable, like everything in React. But there is more to it - Function and Class components are seen as equal by React, but for us, they have very crucial differences which will be explained in the next section.</p>
+                    <p>Simple and highly reusable, like everything in React. But there is more to it - Function and Class components are seen as equal by React, but from the viewpoint of a programmer who has to choose between those, there are very crucial differences which will be explained in the next section.</p>
                 </div>
         </div>
     </section>
@@ -249,8 +249,40 @@
                        <li><strong>Lifecycle:</strong> Given the OOP context, the Lifecycle of an Object is the duration between when an Object is created until when it is destroyed. This is simple, and crucial for understanding what happens next;</li>
                        <li><strong>State:</strong> If you are somewhat experienced in programming, you might have seen before that <a href="https://cs.stackexchange.com/questions/6536/definition-of-the-state-of-an-object-in-oop">"State" is a problematic definition</a>. In OOP, the State of an Object means the configuration it is at a certain point in its lifecycle: in other words, what values its properties contain at a given moment, starting from when it is instantiated until it is destroyed.</li>
                    </ul>
-                   <p>Why all the nerd-y talk? Because this is actually very relevant to us - when you create your React Component as a Function, you can't talk about "State" (i.e it is "Stateless"), as all it does is receive a certain input (props) and send back an output (your fully-built Component). This is not the case, however, when you have a Class Component; when you instantiate your Class Component, you're actually creating an instance of a class - the textbook definition of an Object. </p>
+                   <p>Why all the nerd-y talk? Because this is actually very relevant to us if you want to understand Function and Class Components.</p>
+                   <p>When you create your React Component as a Function, you can't talk about "State" (i.e it is "Stateless"), as all it does is receive a certain input (props) and send back an output (your fully-built Component). This is not the case, however, when you have a Class Component; when you instantiate your Class Component, you're actually creating an instance of a class - the textbook definition of an Object. This Object has properties that can be modified at any point during its life cycle, and methods which can be called - even from the outside, if they are Public.</p>
                    <p>Now that you have an Object, you have a lot more of flexibility on creating whatever it is that you are building; e.g. you can encapsulate and reuse a Component, and leverage <a href="https://reactjs.org/docs/composition-vs-inheritance.html">composition</a>; the Docs advise against using inheritance, so be aware of that. For a practical example of encapsulation, <a href="https://reactjs.org/docs/state-and-lifecycle.html">the React Docs have a very interesting example on a Clock component</a>.</p>
+                </div>
+        </div>
+    </section>
+    <br>
+            <section class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5>Events</h5>
+            </div>
+                <div class="card-body">
+                   <p>If you are a web developer, you quite certainly worked with Javascript events before. Event handlers and events are great at fetching information seamlessly (through e.g. Ajax) or making shiny, bouncy, pretty UI elements. When you're working in ReactJS, you'll certainly want to know how the library works in this sense.</p>
+                   <p>I believe this can be best represented by an example. Remember our <code>CommentButton</code> from a few sections ago? If you were to program an action that happens on click (<code>onClick</code>), here is how you could do add such a functionality to your button:</p>
+                   <code>
+                        import React, { Component } from 'react';<br>
+                        class CommentButton extends React.Component {<br>
+                          constructor(props) {
+                            super(props);
+                            this.handleClick = this.handleClick.bind(this);
+                        }
+                        handleClick(){
+                            e.p
+                        }
+                          render() {<br>
+                            return (<br>
+                        		&lt;button onClick{this.handleClick}>{this.props.textValue}&lt;/button><br>
+                        	);<br>
+                          }<br>
+                        }<br>
+                        export default CommentButton;<br>
+                        </code>
+                   
                 </div>
         </div>
     </section>
