@@ -58,7 +58,18 @@
         <div class="card">
             <div class="card-header"><h5>Event loop: Nodes' secret spice</h5></div>
             <div class="card-body">
-                <p>In Node literature, a term that commonly pops up is "Event Loop". Explanantions for what it is range from completely simple and short to long and complex; I'll have my hand at explaning it, I hope you find it satisfactory. If not, I recommend</p>
+                <p>In Node literature, a term that commonly pops up is "Event Loop". Explanantions for what it is range from completely simple and short to long and complex; I'll have my hand at explaning it, I hope you find it satisfactory. If not, I recommend looking other sources because understanding why Node is different from traditional server languages/libraries/frameworks is key to understanding and writing great code.</p>
+                <p>You see, when we say that NodeJS is single-threaded, that's actually a facade (*wink* for my fellow Laravel devs) for saying that "the V8 Javascript engine running Node is single-threaded" - Node would not be able to do everything async if its <strong>libuv</strong> wasn't multi-threaded.</p>
+                <p>So we now have new terminology here: libuv. libuv is a crucial part of NodeJS: it is an open-source library written especifically with NodeJS in mind, but now also used by other projects. What it does is it handles background threads received from the function call stack, and also handles their callback.</p>
+                <p>Let's try to be a little more practical here. Picture the following:</p>
+                <ul>
+                    <li>You write a call to a certain function <code>fetchDataFromServer()</code>, whose purpose is to fetch data from a server (well); this function also has a <code>callback</code>, which is another function which tells the program what to do when data is finally here.</li>
+                    <li>Once this instruction is read, the call is moved to the <strong>Call Stack</strong>. </li>
+                    <li>The call stack won't stay put waiting for an answer from the server; it will move keep stacking any other instructions, functions and whatever your code is doing.
+                    <li>So in comes libuv; it will be responsible for making sure your <code>fetch</code> is executed, by allocating a certain thread to attend to this request in background.</li>
+                    <li>Once a response or an error (typically called <code>res</code> or <code>err</code>) is received, then libuv moves the callback function into a certain queue called the <strong>Task Queue</strong>. It essentially queues callbacks for completed function calls - in this case, fetchin data.</li>
+                    <li>Because V8 (Node's JS engine inherited from Chrome) is single-threaded, the Call Stack must be free before we can move our callback into it and be executed. Upon being executed, we're back into the beginning of the cycle again. This is why it is called an Event Loop.</li>
+                </ul>
             </div>
         </div>
 </section>
